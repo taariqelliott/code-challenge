@@ -2,10 +2,10 @@
   "name": "code-challenge",
   "version": "1.0.0",
   "description": "Goal is to extract a list of Van Gogh paintings from the attached Google search results page.",
-  "main": "scrape.js",
+  "main": "scraper.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node scrape"
+    "start": "node scraper"
   },
   "author": "",
   "license": "ISC",
