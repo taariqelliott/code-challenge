@@ -12,28 +12,28 @@ artworks_array = []
 html_data = document.css("#_c2yRXMvVOs3N-QazgILgAg93 > div > div > div.MiPcId.klitem-tr.mlo-c > a")
 
 html_data.each do |entry|
-  name = entry.at_css('div:nth-child(2) > div.kltat').text.strip.gsub("\n", "").squeeze(" ") # this solves the issue of the span causing extra spacing inside of the json file
-  extensions_element = entry.at_css('div:nth-child(2) > div.ellip.klmeta')
-  extensions = extensions_element ? [extensions_element.text.strip] : nil
-  link = "https://www.google.com" + entry['href']
-  image = entry.css('.rISBZc.M4dUYb').map { |img| img['src'] }.compact.join(", ")
+	name = entry.at_css('div:nth-child(2) > div.kltat').text.strip.gsub("\n", "").squeeze(" ") # this solves the issue of the span causing extra spacing inside of the json file
+	extensions_element = entry.at_css('div:nth-child(2) > div.ellip.klmeta')
+	extensions = extensions_element ? [extensions_element.text.strip] : nil
+	link = "https://www.google.com" + entry['href']
+	image = entry.css('.rISBZc.M4dUYb').map { |img| img['src'] }.compact.join(", ")
 
-  artwork_entry = if extensions
-                    {
-                      name: name,
-                      extensions: extensions,
-                      link: link,
-                      image: image.empty? ? nil : image
-                    }
-                  else
-                    {
-                      name: name,
-                      link: link,
-                      image: image.empty? ? nil : image
-                    }
-                  end
+	artwork_entry = if extensions
+		{
+			name: name,
+			extensions: extensions,
+			link: link,
+			image: image.empty? ? nil : image
+		}
+	else
+		{
+			name: name,
+			link: link,
+			image: image.empty? ? nil : image
+		}
+	end
 
-  artworks_array.push(artwork_entry)
+	artworks_array.push(artwork_entry)
 end
 
 # array of artwork data to JSON
